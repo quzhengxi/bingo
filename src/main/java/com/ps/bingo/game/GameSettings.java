@@ -24,7 +24,7 @@ public class GameSettings {
 		return numberRange;
 	}
 
-	public void setNumberRange(int numberRange) {
+	public void setNumberRange(final  int numberRange) {
 		this.numberRange = numberRange;
 	}
 
@@ -32,7 +32,7 @@ public class GameSettings {
 		return playerNumber;
 	}
 
-	public void setPlayerNumber(int playerNumber) {
+	public void setPlayerNumber(final int playerNumber) {
 		this.playerNumber = playerNumber;
 	}
 
@@ -40,7 +40,7 @@ public class GameSettings {
 		return ticketRowSize;
 	}
 
-	public void setTicketRowSize(int ticketRowSize) {
+	public void setTicketRowSize(final  int ticketRowSize) {
 		this.ticketRowSize = ticketRowSize;
 	}
 
@@ -48,7 +48,7 @@ public class GameSettings {
 		return ticketColumnSize;
 	}
 
-	public void setTicketColumnSize(int ticketColumnSize) {
+	public void setTicketColumnSize(final int ticketColumnSize) {
 		this.ticketColumnSize = ticketColumnSize;
 	}
 
@@ -56,7 +56,7 @@ public class GameSettings {
 		return numberPerRow;
 	}
 
-	public void setNumberPerRow(int numberPerRow) {
+	public void setNumberPerRow(final int numberPerRow) {
 		this.numberPerRow = numberPerRow;
 	}
 

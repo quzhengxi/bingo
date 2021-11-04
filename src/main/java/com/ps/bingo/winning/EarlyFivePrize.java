@@ -9,7 +9,7 @@ public class EarlyFivePrize implements Prize{
 	}
 
 	@Override
-	public boolean check(Ticket ticket) {
+	public boolean check(final Ticket ticket) {
 		return ticket.isEarlyFive();
 	}
 

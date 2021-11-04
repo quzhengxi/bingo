@@ -10,14 +10,14 @@ public class NumberPerRowValidator implements SettingValidator<String> {
 	static final Logger logger = LogManager.getLogger(NumberPerRowValidator.class.getName());
 
 	private final int ticketRowSize, ticketColumnSize, numberRange;
-	public NumberPerRowValidator(int ticketRowSize, int ticketColumnSize, int numberRange) {
+	public NumberPerRowValidator(final int ticketRowSize, final int ticketColumnSize, final int numberRange) {
 		this.ticketColumnSize = ticketColumnSize;
 		this.ticketRowSize = ticketRowSize;
 		this.numberRange = numberRange;
 	}
 
 	@Override
-	public ResultMessage validate(String t) {
+	public ResultMessage validate(final String t) {
 		try {
 			return validateInternal(Integer.parseInt(t));
 		} catch (NumberFormatException e) {
@@ -27,11 +27,11 @@ public class NumberPerRowValidator implements SettingValidator<String> {
 	}
 
 	@Override
-	public ResultMessage validate(GameSettings t) {
+	public ResultMessage validate(final GameSettings t) {
 		return validateInternal(t.getNumberPerRow());
 	}
 	
-	private boolean isValid(Integer t) {
+	private boolean isValid(final Integer t) {
 		if(t == null)
 			return false;
 		if(t > 0 && t <= 100 && t <= ticketColumnSize) {
@@ -40,13 +40,13 @@ public class NumberPerRowValidator implements SettingValidator<String> {
 		return false;
 	}
 
-	private boolean isRangeNumberEnough(Integer t) {
+	private boolean isRangeNumberEnough(final Integer t) {
 		if(t * ticketRowSize <= numberRange)
 			return true;
 		return false;
 	}
 	
-	private ResultMessage validateInternal(Integer t) {
+	private ResultMessage validateInternal(final Integer t) {
 		if (isValid(t)) {
 			if(isRangeNumberEnough(t))
 				return new ResultMessage(true);

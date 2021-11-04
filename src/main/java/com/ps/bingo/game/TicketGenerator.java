@@ -10,7 +10,7 @@ import com.ps.bingo.validator.SettingsValidator;
 
 public class TicketGenerator {
 
-	public static Ticket generateTicket(GameSettings settings) throws BingoException {
+	public static Ticket generateTicket(final GameSettings settings) throws BingoException {
 		ResultMessage validateResult = validateSettings(settings);
 		if(!validateResult.isSuccess())
 			throw new BingoException(validateResult.getErrorMessage());
@@ -20,14 +20,16 @@ public class TicketGenerator {
 		for(int r=0; r<settings.getTicketRowSize(); r++) {
 			Set<Integer> pickedCols = new HashSet<>();
 			for(int j=0; j < numerPerRow; j++ ) {
+				//pick a random column
 				int c = RandomNumberGenerator.randInt(0, settings.getTicketColumnSize()-1, pickedCols);
+				//set random number to picked column
 				t.setNumber(r, c, RandomNumberGenerator.randInt(1, settings.getNumberRange(), pickedNumbers));
 			}
 		}
 		return t;
 	}
 	
-	private static ResultMessage validateSettings(GameSettings settings) {
+	private static ResultMessage validateSettings(final GameSettings settings) {
 		SettingsValidator v = new SettingsValidator(settings);
 		return v.validate();		
 	}

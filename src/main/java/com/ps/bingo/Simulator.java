@@ -26,7 +26,6 @@ import com.ps.bingo.validator.PlayerNumberValidator;
 import com.ps.bingo.validator.ResultMessage;
 import com.ps.bingo.validator.SettingValidator;
 import com.ps.bingo.validator.TicketSizeValidator;
-import com.ps.bingo.validator.ValidatorMessageBundle;
 
 public class Simulator {
 	static final Logger logger = LogManager.getLogger(Simulator.class.getName());
@@ -49,8 +48,8 @@ public class Simulator {
 		try {
 			scanner = new Scanner(cmdin);
 			GameSettings gameSettings = readGameSettings(scanner);
+			
 			UUID gameId = UUID.randomUUID();
-
 			logger.debug(SimulatorMessageBundle.GAME_ID.format(gameId));
 			logger.debug(gameSettings.toString());
 
@@ -77,7 +76,7 @@ public class Simulator {
 		}
 	}
 
-	private GameSettings readGameSettings(Scanner scanner) throws BingoException {
+	private GameSettings readGameSettings(final Scanner scanner) throws BingoException {
 		GameSettings settings = new GameSettings();
 
 		int numberRange = readSetting(scanner, new NumberRangeValidator(), SimulatorMessageBundle.NUMER_RANGE_FIELD,
@@ -104,7 +103,7 @@ public class Simulator {
 		return settings;
 	}
 
-	private int readSetting(Scanner scanner, SettingValidator<String> validator, BundleMessage fieldNameMsg,
+	private int readSetting(final Scanner scanner, final SettingValidator<String> validator, final BundleMessage fieldNameMsg,
 			BundleMessage promptMsg, String defaultValue) {
 		int inputValue = -1;
 		ResultMessage validateResult = new ResultMessage(false);
@@ -125,7 +124,7 @@ public class Simulator {
 		return inputValue;
 	}
 
-	private int[] readTicketSizeSetting(Scanner scanner, SettingValidator<String> validator, BundleMessage fieldNameMsg,
+	private int[] readTicketSizeSetting(final Scanner scanner, final SettingValidator<String> validator, final BundleMessage fieldNameMsg,
 			BundleMessage promptMsg, String defaultValue) {
 		int rowSize = -1;
 		int colSize = -1;
@@ -162,14 +161,14 @@ public class Simulator {
 
 	}
 
-	private void maybeExit(String cmd) {
+	private void maybeExit(final String cmd) {
 		if (cmd != null && Constants.EXIT_CMD.equals(cmd.toUpperCase())) {
 			cmdout.println(SimulatorMessageBundle.EXIT.format());
 			System.exit(0);
 		}
 	}
 
-	public void exitWithError(Throwable t) {
+	public void exitWithError(final Throwable t) {
 		cmderr.println(t.getMessage());
 		cmderr.println(SimulatorMessageBundle.EXIT.format());
 		logger.error(t);

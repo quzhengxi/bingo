@@ -15,16 +15,16 @@ public class TicketSizeValidator implements SettingValidator<String> {
 		this.numberRange = numberRange;
 	}
 	@Override
-	public ResultMessage validate(String t) {
+	public ResultMessage validate(final String t) {
 		return validateInternal(t);
 	}
 
 	@Override
-	public ResultMessage validate(GameSettings t) {
+	public ResultMessage validate(final GameSettings t) {
 		return validateInternal(t.getTicketRowSize() + "X" + t.getTicketColumnSize());
 	}
 
-	private boolean isValid(String s) {
+	private boolean isValid(final String s) {
 		if (s == null)
 			return false;
 		String[] rowsAndCols = s.split("X");
@@ -42,7 +42,7 @@ public class TicketSizeValidator implements SettingValidator<String> {
 		return false;
 	}
 
-	private ResultMessage validateInternal(String s) {
+	private ResultMessage validateInternal(final String s) {
 		if (isValid(s))
 			return new ResultMessage(true);
 		else {

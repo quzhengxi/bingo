@@ -21,6 +21,7 @@ public class Game {
 	private final GameSettings settings;
 	private final GameData gameData = GameData.getInstance();
 	private final Player[] players;
+	
 	public Game(GameSettings settings) {
 		this.settings = settings;
 		players = new Player[settings.getPlayerNumber()];

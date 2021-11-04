@@ -22,7 +22,6 @@ public class GameData {
 	enum Command{
 		NEXT;
 	}
-	//private static volatile GameData _instance;
 	private final BlockingQueue<Command> command = new ArrayBlockingQueue<>(1);
 	private final ConcurrentHashMap<Integer, List<WinningCombination>> winners = new ConcurrentHashMap<>();
 	private final CopyOnWriteArrayList<Integer> announcedNumbers = new CopyOnWriteArrayList<>();
@@ -44,7 +43,7 @@ public class GameData {
 		}
 		return _instance;*/
 	}
-	public boolean addWinner(int playerId, WinningCombination prize) {
+	public boolean addWinner(final int playerId, final WinningCombination prize) {
 		if(isWinningAnnounced(playerId, prize))
     		return false;
 		wlock.lock();
@@ -65,7 +64,7 @@ public class GameData {
         }
         return true;
 	}
-	public boolean isWinningAnnounced(int playerId, WinningCombination prize) {
+	public boolean isWinningAnnounced(final int playerId, final WinningCombination prize) {
 		rlock.lock();
         try {
         	for(List<WinningCombination> winnings : winners.values()) {

@@ -10,7 +10,7 @@ public class NumberRangeValidator implements SettingValidator<String> {
 	static final Logger logger = LogManager.getLogger(NumberRangeValidator.class.getName());
 
 	@Override
-	public ResultMessage validate(String t) {
+	public ResultMessage validate(final String t) {
 		try {
 			return validateInternal(Integer.parseInt(t));
 		} catch (NumberFormatException e) {
@@ -20,11 +20,11 @@ public class NumberRangeValidator implements SettingValidator<String> {
 	}
 
 	@Override
-	public ResultMessage validate(GameSettings t) {
+	public ResultMessage validate(final GameSettings t) {
 		return validateInternal(t.getNumberRange());
 	}
 	
-	private boolean isValid(Integer t) {
+	private boolean isValid(final Integer t) {
 		if (t == null)
 			return false;
 		if (t > 0 && t <= 100)
@@ -32,7 +32,7 @@ public class NumberRangeValidator implements SettingValidator<String> {
 		return false;
 	}
 
-	private ResultMessage validateInternal(Integer t) {
+	private ResultMessage validateInternal(final Integer t) {
 		if (isValid(t))
 			return new ResultMessage(true);
 		else {

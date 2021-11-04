@@ -12,12 +12,10 @@ import com.ps.bingo.exception.BingoException;
 public class LockManager {
 	static final Logger logger = LogManager.getLogger(LockManager.class.getName());
 
-    //private CountDownLatch callerLatch = null;
     private CountDownLatch nextCommandLatch = null;   
     private CyclicBarrier playerBarrier;
     
-    public LockManager(int playerNumber) {
-    	//this.callerLatch = new CountDownLatch(playerNumber);
+    public LockManager(final  int playerNumber) {
     	this.nextCommandLatch = new CountDownLatch(1);
     	this.playerBarrier = new CyclicBarrier(playerNumber + 1);  //players and caller
     }
@@ -47,16 +45,4 @@ public class LockManager {
 	public void nextCommandLatchCountDown() {
 		this.nextCommandLatch.countDown();
 	}
-
-	/*public void resetCallerLatch() {
-		this.callerLatch = new CountDownLatch(playerNumber);
-	}
-
-	public void callerLatchAwait() throws InterruptedException {
-		this.callerLatch.await();	
-	}
-	
-	public void callerLatchCountDown() {
-		this.callerLatch.countDown();	
-	}*/
 }

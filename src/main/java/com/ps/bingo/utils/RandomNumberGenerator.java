@@ -7,7 +7,7 @@ import java.util.Set;
 public class RandomNumberGenerator {
 	private static Random rand = new Random();
 
-	public static int randInt(int min, int max, Set<Integer> seen) {
+	public static int randInt(final int min, final int max, final Set<Integer> seen) {
 		int randomNum ;
 		do{
 			randomNum = rand.nextInt((max - min) + 1) + min;
@@ -15,7 +15,7 @@ public class RandomNumberGenerator {
 		seen.add(randomNum);
 		return randomNum;
 	}
-	public static int randInt(int min, int max, List<Integer> seen) {
+	public static int randInt(final int min, final int max, final List<Integer> seen) {
 		int randomNum ;
 		do{
 			randomNum = rand.nextInt((max - min) + 1) + min;

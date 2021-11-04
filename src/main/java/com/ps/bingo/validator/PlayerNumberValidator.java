@@ -10,7 +10,7 @@ public class PlayerNumberValidator implements SettingValidator<String> {
 	static final Logger logger = LogManager.getLogger(PlayerNumberValidator.class.getName());
 
 	@Override
-	public ResultMessage validate(String t) {
+	public ResultMessage validate(final String t) {
 		try {
 			return validateInternal(Integer.parseInt(t));
 		} catch (NumberFormatException e) {
@@ -22,7 +22,7 @@ public class PlayerNumberValidator implements SettingValidator<String> {
 	}
 
 	@Override
-	public ResultMessage validate(GameSettings t) {
+	public ResultMessage validate(final GameSettings t) {
 		return validateInternal(t.getPlayerNumber());
 	}
 	
@@ -34,7 +34,7 @@ public class PlayerNumberValidator implements SettingValidator<String> {
 		return false;
 	}
 
-	private ResultMessage validateInternal(Integer t) {
+	private ResultMessage validateInternal(final Integer t) {
 		if (isValid(t))
 			return new ResultMessage(true);
 		else {

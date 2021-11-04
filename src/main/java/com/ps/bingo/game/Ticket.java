@@ -14,13 +14,13 @@ public class Ticket {
 		this.matrix = new int[rowSize][colSize];
 	}
 
-	public void setNumber(int r, int c, int val) {
+	public void setNumber(final int r, final int c, final int val) {
 		if (r < 0 || r >= rowSize || c < 0 || c >= colSize || val <= 0)
 			throw new IllegalArgumentException("");
 		matrix[r][c] = val;
 	}
 
-	public boolean removeNumber(int num) {
+	public boolean removeNumber(final int num) {
 		for (int r = 0; r < rowSize; r++)
 			for (int c = 0; c < colSize; c++) {
 				if (matrix[r][c] == num) {

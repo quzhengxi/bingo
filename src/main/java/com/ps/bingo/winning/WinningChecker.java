@@ -48,7 +48,7 @@ public class WinningChecker {
 		return _instance;
 	}
 
-	public List<WinningCombination> check(Ticket ticket) {
+	public List<WinningCombination> check(final Ticket ticket) {
 		List<WinningCombination> winnings = new ArrayList<>();
 		winnings.addAll(winningPointPrizes.stream().filter(a -> a.check(ticket)).map(a -> a.getName())
 				.collect(Collectors.toList()));

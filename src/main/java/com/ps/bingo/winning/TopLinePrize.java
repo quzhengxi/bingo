@@ -9,7 +9,7 @@ public class TopLinePrize implements Prize{
 	}
 
 	@Override
-	public boolean check(Ticket ticket) {
+	public boolean check(final Ticket ticket) {
 		return ticket.isTopLine();
 	}
 
