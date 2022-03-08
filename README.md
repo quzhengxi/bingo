@@ -1,4 +1,4 @@
-# bingo
+a# bingo
 
 ##### HOW TO BUILD?
 mvn clean compile assembly:single
